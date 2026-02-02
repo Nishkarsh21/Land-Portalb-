@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Land Recognition Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- CESIUM -->
+  <link href="https://unpkg.com/cesium/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <script src="https://unpkg.com/cesium/Build/Cesium/Cesium.js"></script>
+  <link
+  href="https://cesium.com/downloads/cesiumjs/releases/1.114/Build/Cesium/Widgets/widgets.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div id="p1" class="page active">
+  <h1>Land Recognition Portal</h1>
+  <p>Secure Digital Property System</p>
+  <button onclick="nav('p2')">Proceed</button>
+</div>
+
+<!-- PAGE 2 LOGIN -->
+<div id="p2" class="page">
+  <button class="back" onclick="goBack()">⬅ Back</button>
+  <h2>Secure Login</h2>
+  <input id="loginEmail" placeholder="Email" />
+  <input id="loginPass" type="password" placeholder="Password" />
+  <button onclick="login()">Login</button>
+  <p class="link" onclick="nav('p3')">New user? Sign up</p>
+</div>
+
+<!-- PAGE 3 SIGNUP -->
+<div id="p3" class="page">
+  <button class="back" onclick="goBack()">⬅ Back</button>
+  <h2>Create Account</h2>
+  <input id="signupEmail" placeholder="Email" />
+  <input id="signupPass" type="password" placeholder="Password" />
+  <input id="signupConfirm" type="password" placeholder="Confirm Password" />
+  <button onclick="signup()">Create Account</button>
+</div>
+
+<!-- PAGE 4 VERIFY -->
+<div id="p4" class="page">
+  <button class="back" onclick="goBack()">⬅ Back</button>
+  <h2>Identity Verification</h2>
+  <select id="docType">
+    <option value="">Select Document</option>
+    <option value="aadhaar">Aadhaar</option>
+    <option value="pan">PAN</option>
+    <option value="voter">Voter ID</option>
+  </select>
+  <input id="docNumber" placeholder="Document Number" />
+  <button onclick="verifyIdentity()">Verify</button>
+</div>
+
+<!-- PAGE 5 DASHBOARD -->
+<div id="p5" class="page dashboard-page">
+  <div class="dashboard">
+
+    <div class="sidebar">
+      <div onclick="openSection('map')">🌍 3D Map Search</div>
+      <div onclick="openSection('records')">📄 My Records</div>
+      <div onclick="openSection('correction')">✏ Correction</div>
+      <div onclick="openSection('support')">🆘 Support</div>
+      <div onclick="logout()">🚪 Logout</div>
+    </div>
+
+    <div class="content" id="dashboardContent">
+      <h2>Dashboard</h2>
+      <p>Select an option</p>
+    </div>
+
+  </div>
+</div>
+<!-- PAGE 6 : MOBILE CONTENT PAGE -->
+<div id="p6" class="page">
+  <button class="back" onclick="nav('p5')">⬅ Back</button>
+  <div id="mobileContent"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
